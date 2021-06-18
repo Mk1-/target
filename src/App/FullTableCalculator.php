@@ -41,7 +41,7 @@ class FullTableCalculator
             $ROW['recipient'] = ( isset($CUST[$invoice->getRecipient()]) ) ? $CUST[$invoice->getRecipient()]->getName() : "cst_id=" . $invoice->getRecipient();
             $ROW['IN_CURRENCY'] = array();
             foreach ( $CURR as $curr ) {
-                $ROW['IN_CURRENCY'][$curr->getId()] = CurrencyConverter::convert($ROW['date'], $ROW['currency'], $curr->getId(), $ROW['value'], $EXCH);
+                $ROW['IN_CURRENCY'][$curr->getId()] = round(CurrencyConverter::convert($ROW['date'], $ROW['currency'], $curr->getId(), $ROW['value'], $EXCH), 4);
             }
             $RET[$ROW['id']] = $ROW;
         }

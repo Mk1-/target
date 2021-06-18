@@ -12,7 +12,11 @@ class CurrencyConverter
         if ( (! isset($EXCH[$dstCurr])) || (! isset($EXCH[$dstCurr][$date])) ) {
             throw new \Exception(sprintf("No exchange rate for currency %s and date %s.", $dstCurr, $date), 1);
         }
-        return $value * $EXCH[$srcCurr][$date] / $EXCH[$dstCurr][$date];
+        return self::convert_value($value, $EXCH[$srcCurr][$date], $EXCH[$dstCurr][$date]);
+    }
+
+    public static function convert_value($value, $srcRate, $dstRate) {
+        return $value * $srcRate / $dstRate;
     }
 
 }

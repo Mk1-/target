@@ -29,8 +29,10 @@ class ShowListController extends AbstractController
             return $response;
         }
 
+        $T = reset($RET);
+        $HEAD = array_merge(array_slice(array_keys($T), 0, -1), array_keys($T['IN_CURRENCY']));
         return $this->render('showlist.html.twig', [
-            'controller_name' => 'ShowListController', 'TABLE' => $RET
+            'TABLE' => $RET, 'HEAD' => $HEAD
         ]);
     }
 }

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Balance Calculator{% endblock %}
+
+{% block body %}
+
+<div>
+<h1>Balance Calculator</h1>
+
+{{ form(form) }}
+{% if RET %}
+<br>
+Przychód: {{ RET['przychod'] }} Koszt: {{ RET['koszt'] }} Dochód: {{ RET['dochod'] }}
+{% endif %}
+</div>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Invoice List{% endblock %}
+
+{% block body %}
+
+<div>
+    <h1>Invoice List</h1>
+
+    <a href="/showlist/json">JSON</a> <a href="/showlist/csv">CSV</a> 
+
+    <table border=1>
+    <tr>
+    {% for field in HEAD %}<th>{{ field }}</th>{% endfor %}
+    </tr>
+    <tr>
+    {% for ROW in TABLE %}
+    <tr>
+      {% for value in ROW %}
+      {% if value is iterable %}
+        {% for val2 in value %}<td>{{ val2 }}</td>{% endfor %}
+      {% else %}
+        <td>{{ value }}</td>
+      {% endif %}
+      {% endfor %}
+    </tr>
+    {% endfor %}
+
+    </table>
+</div>
+{% endblock %}
